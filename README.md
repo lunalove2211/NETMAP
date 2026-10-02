@@ -92,6 +92,24 @@ Dependencies (`psutil`, `textual`) are installed automatically.
 
 ## Usage
 
+### Running after re-login
+
+The virtual environment is not activated automatically in new sessions:
+
+```bash
+cd NETMAP/netmap
+source .venv/bin/activate
+netmap
+```
+
+Or install a global shortcut once:
+
+```bash
+sudo ln -s "$(pwd)/.venv/bin/netmap" /usr/local/bin/netmap
+```
+
+After that, `netmap` (or `sudo netmap`) works from anywhere.
+
 Run the app:
 
 ```bash
