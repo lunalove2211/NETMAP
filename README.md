@@ -1,92 +1,96 @@
 # NETMAP
 
-**NETMAP** is a Linux application that visualizes your entire infrastructure in one place. It gives you a clear map of your hosts, services, and network connections, so you always know what is running and how everything is connected.
+**NETMAP** is a terminal (TUI) application for Linux that shows your entire infrastructure in one place: processes, ports, and network connections. Built with Python, [Textual](https://github.com/Textualize/textual) and [psutil](https://github.com/giampaolo/psutil).
 
 ## Features
 
-- 🗺️ Full overview of your infrastructure
-- 🖥️ Discovers hosts and devices on your network
-- 🔌 Shows services, ports, and connections
-- ⚡ Lightweight and easy to run
+- 🗺️ Full overview of your infrastructure in the terminal
+- 🔌 Processes, ports, and active network connections
+- ⚡ Lightweight, no GUI required
 - 🐧 Built for Linux
 
 ## Requirements
 
-- Linux (x86_64)
-- `tar`
-- Root / sudo access (may be required for network scanning)
+- Linux
+- Python 3.9+
+- `git` and `pip`
+- Root access (optional, for the full picture, see below)
 
-## Download
+## Installation
 
-Clone the repository:
+### 1. Download
 
 ```bash
 git clone https://github.com/lunalove2211/NETMAP.git
 cd NETMAP
 ```
 
-Or download the archive directly from the **Releases** page / repository files.
-
-## Installation
-
-Extract the archive:
+Or download the `.tar` archive and extract it:
 
 ```bash
 tar -xvf netmap.tar
 cd netmap
 ```
 
-> Replace `netmap.tar` with the actual name of the archive file.
-
-Make the binary executable (if needed):
+### 2. Create a virtual environment
 
 ```bash
-chmod +x netmap
+python3 -m venv .venv
+source .venv/bin/activate
 ```
+
+### 3. Install
+
+```bash
+pip install -e .
+```
+
+This will automatically install the dependencies: `psutil` and `textual`.
 
 ## Usage
 
-Run the application:
+Run the app:
 
 ```bash
-./netmap
-```
-
-With elevated privileges (if required):
-
-```bash
-sudo ./netmap
-```
-
-### Options
-
-| Option | Description |
-|--------|-------------|
-| `-h`, `--help` | Show help message |
-| `-v`, `--version` | Show version |
-
-> Update this table with your real options.
-
-## Optional: Install system-wide
-
-```bash
-sudo mv netmap /usr/local/bin/
 netmap
+```
+
+### Running with root (recommended)
+
+Without root, PIDs and process info of other users will show as `N/A`. For the full picture, run:
+
+```bash
+sudo .venv/bin/netmap
+```
+
+> `sudo netmap` may not work from inside a virtual environment, because `sudo` does not use the venv's `PATH`. Use the full path to the binary as shown above.
+
+## Updating
+
+```bash
+cd NETMAP
+git pull
+source .venv/bin/activate
+pip install -e .
 ```
 
 ## Uninstall
 
 ```bash
-sudo rm /usr/local/bin/netmap
+deactivate
+rm -rf NETMAP
 ```
 
 ## Troubleshooting
 
-**Permission denied**
-Run `chmod +x netmap` and try again.
+**`netmap: command not found`**
+Make sure the virtual environment is activated: `source .venv/bin/activate`
 
-**Missing results or devices**
-Try running with `sudo`.
+**Warning: running without root**
+Some process info will be unavailable. Run with `sudo .venv/bin/netmap`.
+
+**`python3 -m venv` fails on Debian/Ubuntu**
+Install the venv package: `sudo apt install python3-venv`
 
 ## Contributing
 
@@ -94,4 +98,4 @@ Contributions are welcome! Feel free to open an issue or submit a pull request.
 
 ## Author
 
-Created by [lunalove2211](https://github.com/lunalove2211) | PSYHOZ 
+Created by [lunalove2211](https://github.com/lunalove2211) | PSTHOZ
