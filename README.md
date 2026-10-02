@@ -162,10 +162,6 @@ Install the venv package: `sudo apt install python3-venv`
 
 Contributions are welcome! Feel free to open an issue or submit a pull request.
 
-## License
-
-Specify your license here (e.g. MIT).
-
 ## Author
 
-Created by [lunalove2211](https://github.com/lunalove2211)
+Created by [lunalove2211](https://github.com/lunalove2211) | PSYHOZ
