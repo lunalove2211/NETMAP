@@ -12,7 +12,7 @@
 ## Requirements
 
 - Linux
-- Python 3.9+
+- Python 3.11
 - `git` and `pip`
 - Root access (optional, for the full picture, see below)
 
